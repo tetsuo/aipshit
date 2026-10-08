@@ -1,10 +1,8 @@
 # ele
 
-Parses and evaluates an [AIP-160](https://google.aip.dev/160)-style filter language for JSON and Rust values.
+Parses and evaluates an [AIP-160](https://google.aip.dev/160)-style filter language for Rust and JSON values.
 
-## Install
-
-Download the version for your operating system from the [releases page](https://github.com/tetsuo/ele/releases).
+## Installation
 
 To install from source, install [Rust](https://rustup.rs/), then run these commands from a repository checkout:
 
@@ -33,8 +31,9 @@ ele 'user.settings.theme = dark' events.jsonl
 * `--help` and `--version` print information and exit. `--` ends option parsing.
 * Records are limited to 8 MiB, including the newline. `--max-record-bytes N` changes this limit.
 * An empty filter copies input unchanged without applying the record limit.
+* Invalid or oversized records are reported and skipped.
 
-Invalid or oversized records are reported and skipped. Exit codes are `0` for success, including no matches; `1` for filter, data, or I/O errors; and `2` for invalid arguments.
+Exit codes are `0` for success, including no matches; `1` for filter, data, or I/O errors; and `2` for invalid arguments.
 
 ### Matching rules
 
@@ -47,7 +46,7 @@ Invalid or oversized records are reported and skipped. Exit codes are `0` for su
 
 Function calls are not supported during evaluation.
 
-## Rust API
+## API
 
 Compile an expression once and reuse the filter. `serde_json::Value` is supported directly; implement `Filterable` for other types.
 
@@ -88,7 +87,3 @@ let issue = Issue { state: "open".into(), priority: 5 };
 
 assert!(filter.evaluate(&issue));
 ```
-
-## License
-
-Licensed under the [MIT License](LICENSE).
