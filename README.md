@@ -1,14 +1,21 @@
 # ele
 
-Parses and evaluates an [AIP-160](https://google.aip.dev/160)-style filter language for Rust and JSON values.
+Parses and evaluates an [AIP-160](https://google.aip.dev/160)-style filter language for JSON and Rust values.
 
 ## Installation
 
-To install from source, install [Rust](https://rustup.rs/), then run these commands from a repository checkout:
+To install the CLI from source, install [Rust](https://rustup.rs/) 1.88 or newer, then run these commands:
 
 ```bash
 rustup update stable
-cargo +stable install --path . --locked
+cargo +stable install --git https://git.onurgunduz.com/ele --locked
+```
+
+To use the library, add this to your project's `Cargo.toml`:
+
+```toml
+[dependencies]
+ele = { git = "https://git.onurgunduz.com/ele" }
 ```
 
 ## CLI usage
