@@ -3,7 +3,7 @@
 //! ## Example
 //!
 //! ```rust
-//! use ele::{parse, Value, Filterable};
+//! use aipshit::{parse, Value, Filterable};
 //!
 //! let expr = parse("state = \"open\" AND priority > 3").unwrap().unwrap();
 //! println!("{}", expr);
@@ -14,7 +14,7 @@
 //! Implement [`Filterable`] for your type, then call [`Expr::evaluate`]:
 //!
 //! ```rust
-//! use ele::{parse, Value, Filterable};
+//! use aipshit::{parse, Value, Filterable};
 //!
 //! struct Issue {
 //!     state: String,

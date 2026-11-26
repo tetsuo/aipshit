@@ -1,4 +1,4 @@
-use ele::{parse, parser::MAX_FILTER_BYTES};
+use aipshit::{parse, parser::MAX_FILTER_BYTES};
 use std::process::Command;
 
 #[test]
@@ -16,7 +16,7 @@ fn excessive_filters_report_errors_without_crashing() {
         "界".repeat(MAX_FILTER_BYTES / "界".len() + 1),
     ];
     for filter in filters {
-        let output = Command::new(env!("CARGO_BIN_EXE_ele"))
+        let output = Command::new(env!("CARGO_BIN_EXE_aipshit"))
             .args(["--print", &filter])
             .output()
             .unwrap();

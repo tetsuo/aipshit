@@ -1,4 +1,4 @@
-use ele::{Filterable, Value, parse};
+use aipshit::{Filterable, Value, parse};
 use serde_json::json;
 
 fn matches(record: &impl Filterable, text: &str) -> bool {

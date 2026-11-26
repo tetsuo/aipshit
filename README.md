@@ -1,4 +1,4 @@
-# ele
+# aipshit
 
 Parses and evaluates an [AIP-160](https://google.aip.dev/160)-style filter language for JSON and Rust values.
 
@@ -8,14 +8,14 @@ To install the CLI from source, install [Rust](https://rustup.rs/) 1.88 or newer
 
 ```bash
 rustup update stable
-cargo +stable install --git https://git.onurgunduz.com/ele --locked
+cargo +stable install --git https://github.com/tetsuo/aipshit --locked
 ```
 
 To use the library, add this to your project's `Cargo.toml`:
 
 ```toml
 [dependencies]
-ele = { git = "https://git.onurgunduz.com/ele" }
+aipshit = { git = "https://github.com/tetsuo/aipshit" }
 ```
 
 ## CLI usage
@@ -23,15 +23,15 @@ ele = { git = "https://git.onurgunduz.com/ele" }
 The CLI reads one JSON value per line from files or standard input and prints matching records without reformatting.
 
 ```text
-ele [-p|--print] [--max-record-bytes N] [--] <expr> [file...]
+aipshit [-p|--print] [--max-record-bytes N] [--] <expr> [file...]
 ```
 
 ```bash
-echo '{"price":93,"status":"active"}' | ele 'price > 10 AND status = active'
+echo '{"price":93,"status":"active"}' | aipshit 'price > 10 AND status = active'
 
-ele '"timeout"' events.jsonl
-ele 'tags:beta' events.jsonl
-ele 'user.settings.theme = dark' events.jsonl
+aipshit '"timeout"' events.jsonl
+aipshit 'tags:beta' events.jsonl
+aipshit 'user.settings.theme = dark' events.jsonl
 ```
 
 * `--print` prints the parsed expression instead of filtering input.
@@ -58,7 +58,7 @@ Function calls are not supported during evaluation.
 Compile an expression once and reuse the filter. `serde_json::Value` is supported directly; implement `Filterable` for other types.
 
 ```rust
-use ele::parse;
+use aipshit::parse;
 use serde_json::json;
 
 let expr = parse("state = open AND priority > 3").unwrap().unwrap();
@@ -71,7 +71,7 @@ assert!(filter.evaluate(&record));
 For a custom type, expose its fields through `Filterable`:
 
 ```rust
-use ele::{Filterable, Value, parse};
+use aipshit::{Filterable, Value, parse};
 
 struct Issue {
     state: String,

@@ -1,4 +1,4 @@
-use ele::{Filterable, Value, parse};
+use aipshit::{Filterable, Value, parse};
 use serde_json::{Number, Value as Json};
 
 #[test]

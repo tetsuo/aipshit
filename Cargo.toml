@@ -1,12 +1,13 @@
 [package]
-name = "ele"
+name = "aipshit"
 version = "0.3.0"
 edition = "2024"
 rust-version = "1.88"
 license = "MIT"
 description = "AIP-160-style filtering for Rust values and newline-delimited JSON"
-repository = "https://git.onurgunduz.com/ele"
-documentation = "https://docs.rs/ele"
+repository = "https://github.com/tetsuo/aipshit"
+homepage = "https://github.com/tetsuo/aipshit"
+documentation = "https://docs.rs/aipshit"
 readme = "README.md"
 keywords = ["aip-160", "filter", "json", "cli"]
 categories = ["command-line-utilities", "parser-implementations"]
@@ -23,5 +24,5 @@ panic = "abort"
 strip = true
 
 [[bin]]
-name = "ele"
+name = "aipshit"
 path = "src/main.rs"
